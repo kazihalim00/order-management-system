@@ -22,6 +22,7 @@
                     <th scope="col">Phone</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,6 +34,15 @@
                         <td>{{ $order->phone }}</td>
                         <td>{{ $order->product_name }}</td>
                         <td>{{ $order->product_price }}</td>
+                        <td>
+                            <form action="/order/destroy/{{ $order->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                            <a href="/order/edit/{{ $order->id }}" class="btn btn-warning">Edit</a>
+
+                        </td>
                     </tr>
                 @endforeach
 
