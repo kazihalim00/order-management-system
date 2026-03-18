@@ -17,15 +17,22 @@ class OrderController extends Controller
     {
 
         Order::create(
-        [
+            [
 
-            'customer_name' => $request->string('customer_name'),
-            'phone' => $request->string('phone'),
-            'product_name' => $request->string('product_name'),
-            'product_price' => $request->integer('product_price'),
+                'customer_name' => $request->string('customer_name'),
+                'phone' => $request->string('phone'),
+                'product_name' => $request->string('product_name'),
+                'product_price' => $request->integer('product_price'),
 
 
-        ]);
+            ]
+        );
         return redirect()->back();
+    }
+
+    public function index()
+    {
+        $orders = Order::all();
+        return view('orders.index', compact('orders'));
     }
 }
