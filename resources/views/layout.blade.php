@@ -10,7 +10,7 @@
 
 <body>
 
-    <!-- এটা হলো তোমার প্রফেশনাল নেভিগেশন বার -->
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="/orders">Order Management</a>
@@ -27,7 +27,7 @@
         </div>
     </nav>
 
-    <!-- এই গর্তের ভেতরেই তোমার বাকি পেজগুলো এসে বসবে -->
+   
     <div class="container mt-4">
         @yield('content')
     </div>
