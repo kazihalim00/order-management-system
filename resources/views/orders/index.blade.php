@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Total Orders</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/zephyr/bootstrap.min.css">
 
-</head>
-
-<body>
     <div class="container">
         <br>
         <h2 style="text-align:center">Total Order List</h2>
@@ -33,7 +25,6 @@
             <tbody>
                 @foreach ($orders as $order)
                     <tr>
-
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->customer_name }}</td>
                         <td>{{ $order->phone }}</td>
@@ -54,6 +45,4 @@
             </tbody>
         </table>
     </div>
-</body>
-
-</html>
+@endsection
