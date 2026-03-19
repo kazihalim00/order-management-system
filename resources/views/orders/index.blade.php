@@ -13,6 +13,11 @@
     <div class="container">
         <br>
         <h2 style="text-align:center">Total Order List</h2>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <br>
         <table class="table">
             <thead class="thead-dark">

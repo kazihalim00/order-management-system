@@ -15,6 +15,12 @@ class OrderController extends Controller
     }
     public function store(Request $request)
     {
+        $request->validate([
+            'customer_name' => 'required',
+            'phone' => 'required',
+            'product_name' => 'required',
+            'product_price' => 'required|numeric',
+        ]);
 
         Order::create(
             [
@@ -27,7 +33,7 @@ class OrderController extends Controller
 
             ]
         );
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Order created successfully!');
     }
 
     public function index()
@@ -40,7 +46,7 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->delete();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Order deleted successfully!');
 
     }
 
@@ -54,9 +60,15 @@ class OrderController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'customer_name' => 'required',
+            'phone' => 'required',
+            'product_name' => 'required',
+            'product_price' => 'required|numeric',
+        ]);
         $order = Order::find($id);
         $order->update($request->all());
-        return redirect('/orders');
+        return redirect('/orders')->with('success', 'Order updated successfully!');
 
     }
 }
