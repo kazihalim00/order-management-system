@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,5 +30,15 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::get('/init-project', function () {
+    try {
+        Artisan::call('config:clear');
+        Artisan::call('cache:clear');
+        Artisan::call('migrate:fresh', ['--force' => true]);
 
+        return "Project initialized successfully! All tables are created.";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+});
 require __DIR__ . '/auth.php';
